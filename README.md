@@ -1,16 +1,30 @@
-# React + Vite
+# Lorenzo’s Take
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Lorenzo’s Take is a gamified educational web application designed to help high school students develop critical reading and speaking skills in English.
 
-Currently, two official plugins are available:
+The platform is built around interactive “quests” based on controversial and thought-provoking topics aligned with secondary education learning objectives. Each quest includes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- A short reading passage
+- Comprehension mini-games
+- Guided opinion-building activities
+- Vocabulary practice with connectors
+- An experience points (XP) system
 
-## React Compiler
+Students progress by completing quests and earning XP, while teachers can review participation and provide feedback on short oral recordings.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+Frontend:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+
+(Backend integration planned with Django REST Framework.)
+
+## Project Status
+
+This project is currently under active development as part of a university community service program (TCU). The current phase focuses on building the interactive frontend experience before backend integration.
+
+## Author
+
+Developed by Melany Alfaro Barrantes.
