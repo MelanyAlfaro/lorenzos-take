@@ -3,6 +3,7 @@ import { MultipleChoiceSection } from "./MultipleChoiceSection";
 import { DragDropSection } from "./DragDropSection";
 import { SpeakingSection } from "./SpeakingSection";
 import { FlashcardSection } from "./FlashcardSection";
+import { ResultSection } from "./ResultSection";
 
 export const activities = [
   { id: "reading", component: ReadingSection },
@@ -10,4 +11,5 @@ export const activities = [
   { id: "drag-drop", component: DragDropSection },
   { id: "speaking", component: SpeakingSection },
   { id: "flashcards", component: FlashcardSection },
+  { id: "results", component: ResultSection },
 ];
