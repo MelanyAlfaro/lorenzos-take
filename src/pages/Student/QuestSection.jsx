@@ -1,8 +1,10 @@
 import "./QuestSection.css";
 import { quests } from "../../data/quests";
 import completedIcon from "../../assets/completedIcon.png";
+import { useNavigate } from "react-router-dom";
 
 export function QuestSection() {
+  const navigate = useNavigate();
   return (
     <div className="quest-section">
       <h2 className="available-quest-text">Available Quest</h2>
@@ -27,8 +29,9 @@ export function QuestSection() {
                 className={
                   quest.completed ? "completed-button" : "start-button"
                 }
+                onClick={() => navigate(`/student/quest/${quest.id}`)}
               >
-                {quest.completed ? "50 XP" : "Start Quest"}
+                {quest.completed ? "Review Quest" : "Start Quest"}
               </button>
             </div>
           );

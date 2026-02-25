@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import { StudentDashboard } from "./pages/Student/StudentDashboard";
+import { QuestPage } from "./pages/Student/QuestPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         }
       />
       <Route path="student" element={<StudentDashboard />} />
+      <Route path="student/quest/:id" element={<QuestPage />} />
     </Routes>
   );
 }
