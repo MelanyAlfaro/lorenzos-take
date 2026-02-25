@@ -3,14 +3,19 @@ import { useParams } from "react-router-dom";
 import { quests } from "../../../data/quests";
 import { QuestIntro } from "./QuestIntro";
 import { activities } from "./activities";
-
+import { WizardControls } from "./WizardControls";
+import { useNavigate } from "react-router-dom";
+import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
+  const [showExitConfirmation, setShowExitConfirmation] = useState(false);
 
   // At the beggining show a welcome page
   const [showIntro, setShowIntro] = useState(true);
 
   const CurrentComponent = activities[currentActivityIndex].component;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -22,14 +27,47 @@ export function QuestPage() {
   const { id } = useParams();
   const quest = quests.find((quest) => quest.id === id);
 
+  function onSkipIntro() {
+    setShowIntro(false);
+  }
+
   if (showIntro) {
-    return <QuestIntro />;
+    return <QuestIntro onSkipIntro={onSkipIntro} />;
+  }
+
+  function handleNext() {
+    if (currentActivityIndex < activities.length - 1) {
+      setCurrentActivityIndex(currentActivityIndex + 1);
+    }
+  }
+
+  function handleExit() {
+    setShowExitConfirmation(true);
+  }
+
+  function handleFinish() {
+    // TODO: add logic to save the quest results, give XP, etc.
+    navigate("/student");
   }
   return (
     <div>
       <h1>Quest Page </h1>
-      <h1>{quest.id}</h1>
-      <CurrentComponent />
+      <CurrentComponent quest={quest} />
+      <WizardControls
+        onNext={handleNext}
+        onExit={handleExit}
+        onFinish={handleFinish}
+        isLastStep={currentActivityIndex === activities.length - 1}
+      />
+
+      {showExitConfirmation && (
+        <ExitConfirmationDialog
+          onExit={() => {
+            navigate("/student");
+          }}
+          onCancel={() => setShowExitConfirmation(false)}
+        />
+      )}
     </div>
   );
 }
