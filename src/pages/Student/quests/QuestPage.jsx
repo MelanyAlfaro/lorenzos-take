@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { quests } from "../../data/quests";
+import { quests } from "../../../data/quests";
 
 export function QuestPage() {
   const [indexActivity, setIndexActivity] = useState(0);

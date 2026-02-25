@@ -1,6 +1,6 @@
 import xpStart from "./images/xpStart.png";
-import ProfileDefault from "../../assets/profileDefault.png";
-import LorenzoWaving from "../../assets/lorenzoWavingHalf.png";
+import ProfileDefault from "../../../assets/profileDefault.png";
+import LorenzoWaving from "../../../assets/lorenzoWavingHalf.png";
 
 import "./Header.css";
 export function Header() {
