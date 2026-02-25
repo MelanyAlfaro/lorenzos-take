@@ -1,7 +1,13 @@
+import { QuestSection } from "./QuestSection";
+import { WelcomeCard } from "./WelcomeCard";
+import { Header } from "./Header";
+
 export function StudentDashboard() {
   return (
     <div>
-      <h1>Student Dashboard</h1>
+      <Header />
+      <WelcomeCard />
+      <QuestSection />
     </div>
   );
 }

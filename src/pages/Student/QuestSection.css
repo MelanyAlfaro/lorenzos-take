@@ -1,0 +1,84 @@
+.quest-section {
+  margin: 50px 30px;
+}
+
+.available-quest-text {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #047786;
+}
+
+.quest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.quest-card {
+  background: rgb(174, 231, 226);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.quest-card:hover {
+  transform: translateY(-5px);
+}
+
+.quest-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: rgb(4, 127, 141);
+}
+
+.sub-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  font-weight: 600;
+}
+
+.completed-icon {
+  height: 20px;
+}
+
+.completed-label {
+  color: #1aab4f;
+  font-size: 25px;
+}
+
+.quest-xp {
+  color: rgb(16, 133, 229);
+  font-size: 25px;
+}
+
+.start-button {
+  background-color: rgb(3, 110, 217);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.03);
+}
+
+.completed-button {
+  background-color: #18be2b;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 20px;
+  color: white;
+}
