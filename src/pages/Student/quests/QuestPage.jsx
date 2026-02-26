@@ -6,6 +6,7 @@ import { activities } from "./activities";
 import { WizardControls } from "./WizardControls";
 import { useNavigate } from "react-router-dom";
 import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
+import "./QuestPage.css";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
   const [showExitConfirmation, setShowExitConfirmation] = useState(false);
@@ -52,7 +53,9 @@ export function QuestPage() {
   return (
     <div>
       <h1>Quest Page </h1>
-      <CurrentComponent quest={quest} />
+      <div className="quest-content-wrapper">
+        <CurrentComponent quest={quest} />
+      </div>
       <WizardControls
         onNext={handleNext}
         onExit={handleExit}
