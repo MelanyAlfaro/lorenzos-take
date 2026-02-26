@@ -6,6 +6,7 @@ import { activities } from "./activities";
 import { WizardControls } from "./WizardControls";
 import { useNavigate } from "react-router-dom";
 import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
+import { QuestHeader } from "./QuestHeader";
 import "./QuestPage.css";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
@@ -52,7 +53,10 @@ export function QuestPage() {
   }
   return (
     <div>
-      <h1>Quest Page </h1>
+      <QuestHeader
+        title={quest.title}
+        indexActualActivity={currentActivityIndex}
+      />
       <div className="quest-content-wrapper">
         <CurrentComponent quest={quest} />
       </div>

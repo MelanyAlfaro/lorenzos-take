@@ -1,4 +1,4 @@
-import xpStart from "./images/xpStart.png";
+import xpStart from "../../../assets/xpStart.png";
 import ProfileDefault from "../../../assets/profileDefault.png";
 import LorenzoWaving from "../../../assets/lorenzoWavingHalf.png";
 
