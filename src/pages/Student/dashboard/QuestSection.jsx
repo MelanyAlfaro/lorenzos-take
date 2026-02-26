@@ -1,6 +1,6 @@
 import "./QuestSection.css";
-import { quests } from "../../data/quests";
-import completedIcon from "../../assets/completedIcon.png";
+import { quests } from "../../../data/quests";
+import completedIcon from "../../../assets/completedIcon.png";
 import { useNavigate } from "react-router-dom";
 
 export function QuestSection() {

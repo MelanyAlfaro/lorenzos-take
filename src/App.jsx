@@ -2,8 +2,8 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { StudentDashboard } from "./pages/Student/StudentDashboard";
-import { QuestPage } from "./pages/Student/QuestPage";
+import { StudentDashboard } from "./pages/Student/dashboard/StudentDashboard";
+import { QuestPage } from "./pages/Student/quests/QuestPage";
 
 function App() {
   return (

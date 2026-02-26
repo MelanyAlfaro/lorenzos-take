@@ -1,4 +1,4 @@
-import LorenzoWelcome from "../../assets/lorenzoWaving.png";
+import LorenzoWelcome from "../../../assets/lorenzoWaving.png";
 
 import "./WelcomeCard.css";
 export function WelcomeCard() {
