@@ -3,7 +3,7 @@ import LorenzoThinking from "../../../assets/LorenzoThinkingHalf.png";
 import xpStart from "../../../assets/xpStart.png";
 import "./QuestHeader.css";
 // TODO: update xp and progress bar with actual data from backend
-export function QuestHeader({ title, indexActualActivity }) {
+export function QuestHeader({ title, indexActualActivity, onExit }) {
   const progress = (indexActualActivity / TOTAL_ACTIVITIES) * 100;
 
   return (
@@ -13,9 +13,15 @@ export function QuestHeader({ title, indexActualActivity }) {
         <div className="quest-header-content">
           <h1 className="quest-header-title">{title}</h1>
 
-          <div className="experience-container">
-            <img src={xpStart} className="experiencia-start-image" />
-            <p className="experience-points">120 XP</p>
+          <div className="right-section">
+            <div className="experience-container">
+              <img src={xpStart} className="experiencia-start-image" />
+              <p className="experience-points">120 XP</p>
+            </div>
+
+            <button className="exit-button" onClick={onExit}>
+              X
+            </button>
           </div>
         </div>
       </div>

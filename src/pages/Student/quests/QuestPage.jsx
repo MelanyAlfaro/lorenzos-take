@@ -56,13 +56,13 @@ export function QuestPage() {
       <QuestHeader
         title={quest.title}
         indexActualActivity={currentActivityIndex}
+        onExit={handleExit}
       />
       <div className="quest-content-wrapper">
         <CurrentComponent quest={quest} />
       </div>
       <WizardControls
         onNext={handleNext}
-        onExit={handleExit}
         onFinish={handleFinish}
         isLastStep={currentActivityIndex === activities.length - 1}
       />
