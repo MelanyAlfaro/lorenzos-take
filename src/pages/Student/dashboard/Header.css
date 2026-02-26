@@ -82,3 +82,7 @@
   margin: 0;
   font-weight: 600;
 }
+
+.header-bottom-section {
+  background-image: url("../../../assets/welcome-card-background.png");
+}

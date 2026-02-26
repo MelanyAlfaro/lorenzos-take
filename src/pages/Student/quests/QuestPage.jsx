@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { quests } from "../../../data/quests";
 import { QuestIntro } from "./QuestIntro";
-import { activities } from "./activities";
+import { activities } from "./sections/activities";
 import { WizardControls } from "./WizardControls";
 import { useNavigate } from "react-router-dom";
 import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
+import { QuestHeader } from "./QuestHeader";
+import "./QuestPage.css";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
   const [showExitConfirmation, setShowExitConfirmation] = useState(false);
@@ -51,11 +53,16 @@ export function QuestPage() {
   }
   return (
     <div>
-      <h1>Quest Page </h1>
-      <CurrentComponent quest={quest} />
+      <QuestHeader
+        title={quest.title}
+        indexActualActivity={currentActivityIndex}
+        onExit={handleExit}
+      />
+      <div className="quest-content-wrapper">
+        <CurrentComponent quest={quest} />
+      </div>
       <WizardControls
         onNext={handleNext}
-        onExit={handleExit}
         onFinish={handleFinish}
         isLastStep={currentActivityIndex === activities.length - 1}
       />
