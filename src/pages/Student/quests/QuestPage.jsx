@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { quests } from "../../../data/quests";
 import { QuestIntro } from "./QuestIntro";
-import { activities } from "./activities";
+import { activities } from "./sections/activities";
 import { WizardControls } from "./WizardControls";
 import { useNavigate } from "react-router-dom";
 import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
