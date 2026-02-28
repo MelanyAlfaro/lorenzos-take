@@ -7,6 +7,7 @@ import { WizardControls } from "./WizardControls";
 import { useNavigate } from "react-router-dom";
 import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
 import { QuestHeader } from "./QuestHeader";
+import { CheckAnswer } from "./CheckAnswer";
 import "./QuestPage.css";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
@@ -17,6 +18,7 @@ export function QuestPage() {
   // States related to checking the answer and showing feedback
   const [wizardButtonMode, setWizardButtonMode] = useState("next");
   const [validateAnswer, setValidateAnswer] = useState(false);
+  // null, correct, wrong
   const [result, setResult] = useState(null);
 
   const CurrentComponent = activities[currentActivityIndex].component;
@@ -73,7 +75,7 @@ export function QuestPage() {
           setResult={setResult}
         />
       </div>
-      {result && <div style={{ backgroundColor: "green" }}>CORRECT</div>}
+      {result && <CheckAnswer result={result} />}
       <WizardControls
         onNext={handleNext}
         onFinish={handleFinish}
