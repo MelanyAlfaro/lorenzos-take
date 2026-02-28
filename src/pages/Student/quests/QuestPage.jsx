@@ -17,6 +17,7 @@ export function QuestPage() {
   // States related to checking the answer and showing feedback
   const [wizardButtonMode, setWizardButtonMode] = useState("next");
   const [validateAnswer, setValidateAnswer] = useState(false);
+  const [result, setResult] = useState(null);
 
   const CurrentComponent = activities[currentActivityIndex].component;
 
@@ -44,6 +45,8 @@ export function QuestPage() {
     if (currentActivityIndex < activities.length - 1) {
       setCurrentActivityIndex(currentActivityIndex + 1);
     }
+    setWizardButtonMode("disabled");
+    setResult(null);
   }
 
   function handleExit() {
@@ -67,8 +70,10 @@ export function QuestPage() {
           setWizardButtonMode={setWizardButtonMode}
           validateAnswer={validateAnswer}
           setValidateAnswer={setValidateAnswer}
+          setResult={setResult}
         />
       </div>
+      {result && <div style={{ backgroundColor: "green" }}>CORRECT</div>}
       <WizardControls
         onNext={handleNext}
         onFinish={handleFinish}

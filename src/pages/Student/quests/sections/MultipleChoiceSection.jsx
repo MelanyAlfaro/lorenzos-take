@@ -4,13 +4,15 @@ export function MultipleChoiceSection({
   setWizardButtonMode,
   validateAnswer,
   setValidateAnswer,
+  setResult,
 }) {
   const [selectedOption, setSelectedOption] = useState(null);
-  const multipleChoice = quest.multipleChoice;
 
+  useState(false);
+
+  const multipleChoice = quest.multipleChoice;
   useEffect(() => {
     setWizardButtonMode("disabled");
-    console.log("MultipleChoiceSection mounted, button disabled");
   }, [setWizardButtonMode]);
 
   useEffect(() => {
@@ -22,6 +24,8 @@ export function MultipleChoiceSection({
       console.log(multipleChoice.correctAnswerIndex);
       if (selectedOption === multipleChoice.correctAnswerIndex) {
         console.log("CORRECT ANSWER");
+        setResult("correct");
+        setWizardButtonMode("next");
       } else {
         console.log("WRONG ANSWER");
       }

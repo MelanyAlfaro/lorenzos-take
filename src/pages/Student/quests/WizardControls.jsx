@@ -3,7 +3,6 @@ export function WizardControls({
   onFinish,
   isLastStep,
   wizardButtonMode,
-
   setValidateAnswer,
 }) {
   if (isLastStep) {
@@ -25,6 +24,10 @@ export function WizardControls({
         Check Answer
       </button>
     );
+  } else if (wizardButtonMode === "next") {
+    <button className="next-wizard-button" onClick={onNext}>
+      Next
+    </button>;
   }
 
   return (
