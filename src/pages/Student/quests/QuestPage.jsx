@@ -20,6 +20,7 @@ export function QuestPage() {
   const [validateAnswer, setValidateAnswer] = useState(false);
   // null, correct, wrong
   const [result, setResult] = useState(null);
+  const [resultMessage, setResultMessage] = useState(null);
 
   const CurrentComponent = activities[currentActivityIndex].component;
 
@@ -73,9 +74,10 @@ export function QuestPage() {
           validateAnswer={validateAnswer}
           setValidateAnswer={setValidateAnswer}
           setResult={setResult}
+          setResultMessage={setResultMessage}
         />
       </div>
-      {result && <CheckAnswer result={result} />}
+      {result && <CheckAnswer result={result} resultMessage={resultMessage} />}
       <WizardControls
         onNext={handleNext}
         onFinish={handleFinish}
