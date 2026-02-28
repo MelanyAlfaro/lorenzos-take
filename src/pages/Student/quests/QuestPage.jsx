@@ -77,14 +77,24 @@ export function QuestPage() {
           setResultMessage={setResultMessage}
         />
       </div>
-      {result && <CheckAnswer result={result} resultMessage={resultMessage} />}
-      <WizardControls
-        onNext={handleNext}
-        onFinish={handleFinish}
-        isLastStep={currentActivityIndex === activities.length - 1}
-        wizardButtonMode={wizardButtonMode}
-        setValidateAnswer={setValidateAnswer}
-      />
+
+      <div className="bottom-container">
+        {result && (
+          <CheckAnswer
+            result={result}
+            resultMessage={resultMessage}
+            className="check-answer-container"
+          />
+        )}
+        <WizardControls
+          className="wizard-button-container"
+          onNext={handleNext}
+          onFinish={handleFinish}
+          isLastStep={currentActivityIndex === activities.length - 1}
+          wizardButtonMode={wizardButtonMode}
+          setValidateAnswer={setValidateAnswer}
+        />
+      </div>
 
       {showExitConfirmation && (
         <ExitConfirmationDialog

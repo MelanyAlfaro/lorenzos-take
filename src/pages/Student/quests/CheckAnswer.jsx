@@ -14,7 +14,7 @@ export function CheckAnswer({ result, resultMessage }) {
   ];
   const NEGATIVE_MESSAGES = [
     "Not quite! 💪",
-    "So close! 🥑",
+    "So close! ",
     "Almost! 🔍",
     "Oops! Let's learn from that one. 🌱",
   ];
