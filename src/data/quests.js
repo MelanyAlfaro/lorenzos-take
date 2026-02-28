@@ -13,10 +13,22 @@ export const quests = [
     multipleChoice: {
       question: "What is the main idea of the text?",
       options: [
-        "Social media likes are only useful for young, famous creators seeking validation.",
-        "Likes can motivate users but may also negatively affect mental health.",
-        "Teenagers often use social media irresponsibly, leading to risky behaviors.",
-        "Social media platforms should be closed to prevent poor online choices.",
+        {
+          id: "a",
+          text: "Social media likes are only useful for young, famous creators seeking validation.",
+        },
+        {
+          id: "b",
+          text: "Likes can motivate users but may also negatively affect mental health.",
+        },
+        {
+          id: "c",
+          text: "Teenagers often use social media irresponsibly, leading to risky behaviors.",
+        },
+        {
+          id: "d",
+          text: "Social media platforms should be closed to prevent poor online choices.",
+        },
       ],
       correctAnswerIndex: 1,
     },
@@ -112,10 +124,16 @@ export const quests = [
       multipleChoice: {
         question: "What is the main idea of the text?",
         options: [
-          "Smartphones are only useful for emergencies at school.",
-          "Smartphones help students use artificial intelligence in class.",
-          "Smartphones have advantages and disadvantages.",
-          "All schools should completely ban phones.",
+          {
+            id: "a",
+            text: "Smartphones are only useful for emergencies at school.",
+          },
+          {
+            id: "a",
+            text: "Smartphones help students use artificial intelligence in class.",
+          },
+          { id: "a", text: "Smartphones have advantages and disadvantages." },
+          { id: "a", text: "All schools should completely ban phones." },
         ],
         correctAnswerIndex: 2,
       },
