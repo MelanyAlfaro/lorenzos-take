@@ -11,9 +11,12 @@ import "./QuestPage.css";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
   const [showExitConfirmation, setShowExitConfirmation] = useState(false);
-
   // At the beggining show a welcome page
   const [showIntro, setShowIntro] = useState(true);
+
+  // States related to checking the answer and showing feedback
+  const [wizardButtonMode, setWizardButtonMode] = useState("next");
+  const [validateAnswer, setValidateAnswer] = useState(false);
 
   const CurrentComponent = activities[currentActivityIndex].component;
 
@@ -59,12 +62,19 @@ export function QuestPage() {
         onExit={handleExit}
       />
       <div className="quest-content-wrapper">
-        <CurrentComponent quest={quest} />
+        <CurrentComponent
+          quest={quest}
+          setWizardButtonMode={setWizardButtonMode}
+          validateAnswer={validateAnswer}
+          setValidateAnswer={setValidateAnswer}
+        />
       </div>
       <WizardControls
         onNext={handleNext}
         onFinish={handleFinish}
         isLastStep={currentActivityIndex === activities.length - 1}
+        wizardButtonMode={wizardButtonMode}
+        setValidateAnswer={setValidateAnswer}
       />
 
       {showExitConfirmation && (

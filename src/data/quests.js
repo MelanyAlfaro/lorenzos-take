@@ -120,62 +120,60 @@ export const quests = [
       However, many teachers worry that phones can be a distraction. Students might use social media, play games, or cheat on exams using their phones. With the rise of artificial intelligence tools, some fear that students could misuse these technologies to complete assignments dishonestly. Because of these concerns, schools have different policies on phone usage, and there is ongoing debate about whether phones should be allowed in class.`,
     },
 
-    miniGames: {
-      multipleChoice: {
-        question: "What is the main idea of the text?",
-        options: [
-          {
-            id: "a",
-            text: "Smartphones are only useful for emergencies at school.",
-          },
-          {
-            id: "a",
-            text: "Smartphones help students use artificial intelligence in class.",
-          },
-          { id: "a", text: "Smartphones have advantages and disadvantages." },
-          { id: "a", text: "All schools should completely ban phones." },
-        ],
-        correctAnswerIndex: 2,
-      },
+    multipleChoice: {
+      question: "What is the main idea of the text?",
+      options: [
+        {
+          id: "a",
+          text: "Smartphones are only useful for emergencies at school.",
+        },
+        {
+          id: "b",
+          text: "Smartphones help students use artificial intelligence in class.",
+        },
+        { id: "c", text: "Smartphones have advantages and disadvantages." },
+        { id: "d", text: "All schools should completely ban phones." },
+      ],
+      correctAnswerIndex: 2,
+    },
 
-      dragAndDrop: {
-        instruction: "Drag and drop each idea into the correct column.",
+    dragAndDrop: {
+      instruction: "Drag and drop each idea into the correct column.",
 
-        items: [
-          { text: "Students can look for information.", type: "positive" },
-          {
-            text: "Phones can assist students in communicating during emergencies.",
-            type: "positive",
-          },
-          {
-            text: "Students get distracted by social media.",
-            type: "negative",
-          },
-          {
-            text: "Phones can be used to cheat in exams.",
-            type: "negative",
-          },
-          {
-            text: "AI tools can be misused.",
-            type: "negative",
-          },
-          {
-            text: "Students can use educational apps.",
-            type: "positive",
-          },
-        ],
-      },
+      items: [
+        { text: "Students can look for information.", type: "positive" },
+        {
+          text: "Phones can assist students in communicating during emergencies.",
+          type: "positive",
+        },
+        {
+          text: "Students get distracted by social media.",
+          type: "negative",
+        },
+        {
+          text: "Phones can be used to cheat in exams.",
+          type: "negative",
+        },
+        {
+          text: "AI tools can be misused.",
+          type: "negative",
+        },
+        {
+          text: "Students can use educational apps.",
+          type: "positive",
+        },
+      ],
+    },
 
-      inference: {
-        question: "Based on the text, what does the text suggest?",
-        options: [
-          "Schools are not prepared to deal with artificial intelligence.",
-          "There is disagreement among schools regarding policies on phone usage.",
-          "Artificial intelligence should be completely banned from education.",
-          "Students use phones only for social media during class.",
-        ],
-        correctAnswerIndex: 1,
-      },
+    inference: {
+      question: "Based on the text, what does the text suggest?",
+      options: [
+        "Schools are not prepared to deal with artificial intelligence.",
+        "There is disagreement among schools regarding policies on phone usage.",
+        "Artificial intelligence should be completely banned from education.",
+        "Students use phones only for social media during class.",
+      ],
+      correctAnswerIndex: 1,
     },
 
     speaking: [
