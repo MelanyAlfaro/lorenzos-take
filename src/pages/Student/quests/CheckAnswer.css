@@ -1,0 +1,15 @@
+.mascot {
+  height: 180px;
+}
+
+.result-container-correct,
+.result-container-wrong {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+}
+
+.result-content {
+  margin: none;
+  padding-top: 70px;
+}

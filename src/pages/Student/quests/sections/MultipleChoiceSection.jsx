@@ -43,6 +43,7 @@ export function MultipleChoiceSection({
 
   function handleOnChange(event) {
     console.log("Selected option:", event.target.value);
+    setResult(null);
     setSelectedOption(Number(event.target.id));
     setWizardButtonMode("check");
   }
