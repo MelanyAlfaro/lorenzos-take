@@ -5,6 +5,7 @@ export function MultipleChoiceSection({
   validateAnswer,
   setValidateAnswer,
   setResult,
+  setResultMessage,
 }) {
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -18,7 +19,8 @@ export function MultipleChoiceSection({
   useEffect(() => {
     if (validateAnswer) {
       console.log("Validating answer...");
-      if (!selectedOption) return console.log("Answer hasnt been selected");
+      if (selectedOption === undefined)
+        return console.log("Answer hasnt been selected");
 
       console.log(selectedOption);
       console.log(multipleChoice.correctAnswerIndex);
@@ -26,8 +28,14 @@ export function MultipleChoiceSection({
         console.log("CORRECT ANSWER");
         setResult("correct");
         setWizardButtonMode("next");
+        setResultMessage(null);
       } else {
         console.log("WRONG ANSWER");
+        console.log(multipleChoice.options[multipleChoice.correctAnswerIndex]);
+        setResult("wrong");
+        setResultMessage(
+          `The correct answer is:  ${multipleChoice.options[multipleChoice.correctAnswerIndex].text}`,
+        );
       }
     }
     setValidateAnswer(false);
@@ -35,6 +43,7 @@ export function MultipleChoiceSection({
 
   function handleOnChange(event) {
     console.log("Selected option:", event.target.value);
+    setResult(null);
     setSelectedOption(Number(event.target.id));
     setWizardButtonMode("check");
   }

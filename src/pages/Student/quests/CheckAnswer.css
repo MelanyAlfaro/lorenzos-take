@@ -1,0 +1,24 @@
+.mascot {
+  height: 150px;
+  margin-right: 20px;
+}
+
+.result-container-correct,
+.result-container-wrong {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  padding: 20px;
+}
+
+.result-content {
+}
+
+.result-container-correct {
+  background-color: rgba(139, 248, 142, 0.674);
+}
+
+.result-container-wrong {
+  background-color: rgba(247, 162, 162, 0.646);
+  padding-top: 70px;
+}

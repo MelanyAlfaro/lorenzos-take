@@ -7,6 +7,7 @@ import { WizardControls } from "./WizardControls";
 import { useNavigate } from "react-router-dom";
 import { ExitConfirmationDialog } from "./ExitConfirmationDialog";
 import { QuestHeader } from "./QuestHeader";
+import { CheckAnswer } from "./CheckAnswer";
 import "./QuestPage.css";
 export function QuestPage() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0);
@@ -17,7 +18,9 @@ export function QuestPage() {
   // States related to checking the answer and showing feedback
   const [wizardButtonMode, setWizardButtonMode] = useState("next");
   const [validateAnswer, setValidateAnswer] = useState(false);
+  // null, correct, wrong
   const [result, setResult] = useState(null);
+  const [resultMessage, setResultMessage] = useState(null);
 
   const CurrentComponent = activities[currentActivityIndex].component;
 
@@ -71,16 +74,27 @@ export function QuestPage() {
           validateAnswer={validateAnswer}
           setValidateAnswer={setValidateAnswer}
           setResult={setResult}
+          setResultMessage={setResultMessage}
         />
       </div>
-      {result && <div style={{ backgroundColor: "green" }}>CORRECT</div>}
-      <WizardControls
-        onNext={handleNext}
-        onFinish={handleFinish}
-        isLastStep={currentActivityIndex === activities.length - 1}
-        wizardButtonMode={wizardButtonMode}
-        setValidateAnswer={setValidateAnswer}
-      />
+
+      <div className="bottom-container">
+        {result && (
+          <CheckAnswer
+            result={result}
+            resultMessage={resultMessage}
+            className="check-answer-container"
+          />
+        )}
+        <WizardControls
+          className="wizard-button-container"
+          onNext={handleNext}
+          onFinish={handleFinish}
+          isLastStep={currentActivityIndex === activities.length - 1}
+          wizardButtonMode={wizardButtonMode}
+          setValidateAnswer={setValidateAnswer}
+        />
+      </div>
 
       {showExitConfirmation && (
         <ExitConfirmationDialog
