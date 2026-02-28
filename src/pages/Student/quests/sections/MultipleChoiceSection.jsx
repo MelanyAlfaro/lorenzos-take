@@ -18,7 +18,8 @@ export function MultipleChoiceSection({
   useEffect(() => {
     if (validateAnswer) {
       console.log("Validating answer...");
-      if (!selectedOption) return console.log("Answer hasnt been selected");
+      if (selectedOption === undefined)
+        return console.log("Answer hasnt been selected");
 
       console.log(selectedOption);
       console.log(multipleChoice.correctAnswerIndex);
@@ -28,6 +29,7 @@ export function MultipleChoiceSection({
         setWizardButtonMode("next");
       } else {
         console.log("WRONG ANSWER");
+        setResult("wrong");
       }
     }
     setValidateAnswer(false);
