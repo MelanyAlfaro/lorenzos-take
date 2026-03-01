@@ -32,6 +32,7 @@ export function MultipleChoiceSection({
       } else {
         console.log("WRONG ANSWER");
         console.log(multipleChoice.options[multipleChoice.correctAnswerIndex]);
+        setWizardButtonMode("next");
         setResult("wrong");
         setResultMessage(
           `The correct answer is:  ${multipleChoice.options[multipleChoice.correctAnswerIndex].text}`,
