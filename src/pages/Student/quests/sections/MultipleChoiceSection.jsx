@@ -7,6 +7,7 @@ export function MultipleChoiceSection({
   setResult,
   setResultMessage,
 }) {
+  // TODO: make option or something else to be able to watch the reading, or go back?
   const [selectedOption, setSelectedOption] = useState(null);
 
   useState(false);
