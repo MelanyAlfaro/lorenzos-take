@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap");
+
+.dragdrop-wrapper {
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.dragdrop-instruction {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dragdrop-bank {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  min-height: 56px;
+  background: #fafafa;
+  border-radius: 14px;
+  border: 2px dashed #e5e7eb;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  justify-content: center;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.dragdrop-bank--over {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Columns */
+.dragdrop-columns {
+  display: flex;
+  gap: 30px;
+}
+
+.dragdrop-column {
+  flex: 1;
+  min-height: 180px;
+  border-radius: 16px;
+  padding: 16px;
+  border: 2px dashed #d1d5db;
+}
+
+.dragdrop-column--positive {
+  background: #f0fdf4;
+  margin-bottom: 20px;
+}
+
+.dragdrop-column--negative {
+  background: #fff5f5;
+}
+
+.dragdrop-column-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.dragdrop-column-title {
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.dragdrop-column-title--positive {
+  color: #15803d;
+}
+
+.dragdrop-column-title--negative {
+  color: #b91c1c;
+}
+
+.dragdrop-column-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Chips */
+.dragdrop-chip {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  color: #374151;
+  font-size: 13px;
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+  transition: all 0.2s;
+  display: inline-block;
+}
+
+.dragdrop-chip--placed {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dragdrop-chip--dragging {
+  opacity: 0.4;
+}
+
+/* Empty placeholder */
+.dragdrop-empty {
+  color: #9ca3af;
+  font-size: 20px;
+  align-self: center;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Result */
+.dragdrop-result {
+  margin-top: 20px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.dragdrop-result--success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.dragdrop-result--fail {
+  background: #fff5f5;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
