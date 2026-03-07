@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 export function MultipleChoiceSection({
   quest,
   setWizardButtonMode,
@@ -9,6 +9,7 @@ export function MultipleChoiceSection({
 }) {
   // TODO: make option or something else to be able to watch the reading, or go back?
   const [selectedOption, setSelectedOption] = useState(null);
+  const [usedAttempts, setUsedAttempts] = useState(0);
 
   useState(false);
 
