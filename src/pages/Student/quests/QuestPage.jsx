@@ -61,7 +61,7 @@ export function QuestPage() {
     navigate("/student");
   }
   return (
-    <div>
+    <div className="quest-page">
       <QuestHeader
         title={quest.title}
         indexActualActivity={currentActivityIndex}
