@@ -98,7 +98,6 @@ export function DragDropSection({ quest, setWizardButtonMode }) {
 
   return (
     <div className="drag-drop-container">
-      <h1>Drag and Drop</h1>
       <p className="dragdrop-instruction">{instruction}</p>
       {/* Unplaced bank */}
       <div
