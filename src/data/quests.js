@@ -48,10 +48,16 @@ export const quests = [
     inference: {
       question: "Based on the text, what does the text suggest?",
       options: [
-        "Likes should never be used on social media.",
-        "Social media does not affect people’s mental health.",
-        "Some platforms have shown interest in user's mental health.",
-        "Teenagers should stop using social media.",
+        { id: "a", text: "Likes should never be used on social media." },
+        {
+          id: "b",
+          text: "Social media does not affect people's mental health.",
+        },
+        {
+          id: "c",
+          text: "Some platforms have shown interest in user's mental health.",
+        },
+        { id: "d", text: "Teenagers should stop using social media." },
       ],
       correctAnswerIndex: 2,
     },
@@ -168,10 +174,22 @@ export const quests = [
     inference: {
       question: "Based on the text, what does the text suggest?",
       options: [
-        "Schools are not prepared to deal with artificial intelligence.",
-        "There is disagreement among schools regarding policies on phone usage.",
-        "Artificial intelligence should be completely banned from education.",
-        "Students use phones only for social media during class.",
+        {
+          id: "a",
+          text: "Schools are not prepared to deal with artificial intelligence.",
+        },
+        {
+          id: "b",
+          text: "There is disagreement among schools regarding policies on phone usage.",
+        },
+        {
+          id: "c",
+          text: "Artificial intelligence should be completely banned from education.",
+        },
+        {
+          id: "d",
+          text: "Students use phones only for social media during class.",
+        },
       ],
       correctAnswerIndex: 1,
     },
