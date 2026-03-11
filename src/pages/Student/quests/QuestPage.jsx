@@ -18,9 +18,11 @@ export function QuestPage() {
   // States related to checking the answer and showing feedback
   const [wizardButtonMode, setWizardButtonMode] = useState("next");
   const [validateAnswer, setValidateAnswer] = useState(false);
+
   // null, correct, wrong
   const [result, setResult] = useState(null);
   const [resultMessage, setResultMessage] = useState(null);
+  const [usedAttempts, setUsedAttempts] = useState(0);
 
   const CurrentComponent = activities[currentActivityIndex].component;
 
@@ -75,6 +77,8 @@ export function QuestPage() {
           setValidateAnswer={setValidateAnswer}
           setResult={setResult}
           setResultMessage={setResultMessage}
+          usedAttempts={usedAttempts}
+          setUsedAttempts={setUsedAttempts}
         />
       </div>
 
