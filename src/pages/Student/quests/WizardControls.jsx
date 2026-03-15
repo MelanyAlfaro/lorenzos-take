@@ -3,7 +3,8 @@ export function WizardControls({
   onFinish,
   isLastStep,
   wizardButtonMode,
-  setValidateAnswer,
+  onCheckAnswer,
+  onTryAgain,
 }) {
   if (isLastStep) {
     return (
@@ -17,17 +18,22 @@ export function WizardControls({
     return <button className="next-wizzard-button-disabled">Next</button>;
   } else if (wizardButtonMode === "check") {
     return (
-      <button
-        className="check-wizard-button"
-        onClick={() => setValidateAnswer(true)}
-      >
+      <button className="check-wizard-button" onClick={onCheckAnswer}>
         Check Answer
       </button>
     );
   } else if (wizardButtonMode === "next") {
-    <button className="next-wizard-button" onClick={onNext}>
-      Next
-    </button>;
+    return (
+      <button className="next-wizard-button" onClick={onNext}>
+        Next
+      </button>
+    );
+  } else if (wizardButtonMode === "Try again") {
+    return (
+      <button className="try-again-wizard-button" onClick={onTryAgain}>
+        Try again
+      </button>
+    );
   }
 
   return (

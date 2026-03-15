@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { quests } from "../../../data/quests";
 import { QuestIntro } from "./QuestIntro";
@@ -17,10 +17,19 @@ export function QuestPage() {
 
   // States related to checking the answer and showing feedback
   const [wizardButtonMode, setWizardButtonMode] = useState("next");
-  const [validateAnswer, setValidateAnswer] = useState(false);
+
   // null, correct, wrong
   const [result, setResult] = useState(null);
   const [resultMessage, setResultMessage] = useState(null);
+  const [usedAttempts, setUsedAttempts] = useState(0);
+
+  // User for multiple choice sections to disable the input when a answer has been selected
+  const [disabled, setDisabled] = useState(false);
+  const currentActivityRef = useRef();
+
+  function handleCheckAnswer() {
+    currentActivityRef.current.validateAnswer();
+  }
 
   const CurrentComponent = activities[currentActivityIndex].component;
 
@@ -56,6 +65,11 @@ export function QuestPage() {
     setShowExitConfirmation(true);
   }
 
+  function handleTryAgain() {
+    setResult(null);
+    setWizardButtonMode("disabled");
+    setDisabled(false);
+  }
   function handleFinish() {
     // TODO: add logic to save the quest results, give XP, etc.
     navigate("/student");
@@ -71,10 +85,13 @@ export function QuestPage() {
         <CurrentComponent
           quest={quest}
           setWizardButtonMode={setWizardButtonMode}
-          validateAnswer={validateAnswer}
-          setValidateAnswer={setValidateAnswer}
           setResult={setResult}
           setResultMessage={setResultMessage}
+          usedAttempts={usedAttempts}
+          setUsedAttempts={setUsedAttempts}
+          setDisabled={setDisabled}
+          disabled={disabled}
+          ref={currentActivityRef}
         />
       </div>
 
@@ -92,7 +109,8 @@ export function QuestPage() {
           onFinish={handleFinish}
           isLastStep={currentActivityIndex === activities.length - 1}
           wizardButtonMode={wizardButtonMode}
-          setValidateAnswer={setValidateAnswer}
+          onCheckAnswer={handleCheckAnswer}
+          onTryAgain={handleTryAgain}
         />
       </div>
 
