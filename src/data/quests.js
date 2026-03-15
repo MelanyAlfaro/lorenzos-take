@@ -64,7 +64,7 @@ export const quests = [
 
     speaking: [
       {
-        scrambled: [
+        words: [
           "I",
           "think",
           "social media",
@@ -80,7 +80,7 @@ export const quests = [
           "I think social media should hide likes because they cause stress.",
       },
       {
-        scrambled: [
+        words: [
           "In my opinion",
           "likes",
           "are",
@@ -98,7 +98,7 @@ export const quests = [
           "In my opinion, likes are important because they help creators understand what people enjoy.",
       },
       {
-        scrambled: [
+        words: [
           "I",
           "believe",
           "focusing",
@@ -196,7 +196,7 @@ export const quests = [
 
     speaking: [
       {
-        scrambled: [
+        words: [
           "I",
           "think",
           "phones",
@@ -215,7 +215,7 @@ export const quests = [
           "I think phones should be allowed in class because they help students research information.",
       },
       {
-        scrambled: [
+        words: [
           "In my opinion",
           "phones",
           "are",
@@ -231,7 +231,7 @@ export const quests = [
           "In my opinion, phones are a distraction because students use social media in class.",
       },
       {
-        scrambled: [
+        words: [
           "I",
           "believe",
           "phones",
