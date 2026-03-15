@@ -1,4 +1,4 @@
-import { TOTAL_ATTEMPTS } from "../../constants";
+import { TOTAL_ATTEMPTS } from "../../../constants";
 export function handleValidateAnswer({
   selectedOption,
   component,
