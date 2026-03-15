@@ -15,7 +15,12 @@ export function WizardControls({
   }
 
   if (wizardButtonMode === "disabled") {
-    return <button className="next-wizzard-button-disabled">Next</button>;
+    //TODO : REMOVE
+    return (
+      <button className="next-wizzard-button-disabled" onClick={onNext}>
+        Next
+      </button>
+    );
   } else if (wizardButtonMode === "check") {
     return (
       <button className="check-wizard-button" onClick={onCheckAnswer}>
