@@ -1,3 +1,4 @@
+import { TOTAL_ATTEMPTS } from "../../constants";
 export function handleValidateAnswer({
   selectedOption,
   component,
@@ -19,7 +20,7 @@ export function handleValidateAnswer({
     setResultMessage(null);
   } else {
     setResult("wrong");
-    if (newAttempts < 2) {
+    if (newAttempts < TOTAL_ATTEMPTS) {
       setResultMessage("Try again! You can do it! 💪");
       setWizardButtonMode("Try again");
     } else {

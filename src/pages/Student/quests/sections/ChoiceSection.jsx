@@ -1,6 +1,7 @@
 // ChoiceSection.jsx — componente base compartido
 import { useEffect, useState, useImperativeHandle, forwardRef } from "react";
 import { handleValidateAnswer } from "./handleValidateAnswer";
+import { TOTAL_ATTEMPTS } from "../../../constants";
 
 export const ChoiceSection = forwardRef(function ChoiceSection(
   {
@@ -60,7 +61,7 @@ export const ChoiceSection = forwardRef(function ChoiceSection(
       <h1>{title}</h1>
       <div className="remaing-attempts-container">
         <p className="remaining-attempts">
-          Remaining attempts: {2 - usedAttempts}
+          Remaining attempts: {TOTAL_ATTEMPTS - usedAttempts}
         </p>
       </div>
       <p className="multiple-choice">{question}</p>
