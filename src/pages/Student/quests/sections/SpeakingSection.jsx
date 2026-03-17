@@ -47,63 +47,51 @@ export function SpeakingSection({ quest }) {
 
   function handleOnDrop(event, to) {
     event.preventDefault();
-    console.log("drop", to);
-
-    if (!draggingWord) return;
 
     const id = event.dataTransfer.getData("idDragged");
     const from = event.dataTransfer.getData("originDragged");
 
-    // If when dragging the user placed in the same place, dont do anything
-    // If when dragging the user placed in the same place, dont do anything
-    if (from === to && !dragOverWordId) {
-      setDraggingWord(null);
-      setDragOverZone(null);
-      return;
-    }
+    if (!id) return;
 
-    // Get the item that is being dragged
-    const wordDragged =
-      from === "scrambled-words-container"
-        ? scrambledWords.find((element) => element.id === id)
-        : formedSentence.find((element) => element.id === id);
+    // 1. Obtener el item
+    const sourceArray =
+      from === "scrambled-words-container" ? scrambledWords : formedSentence;
 
-    // TODO: check if there is a better way to this
-    if (!wordDragged) {
-      console.warn(`Item ${id} not found in ${from}`);
-      return;
-    }
+    const wordDragged = sourceArray.find((element) => element.id === id);
+    if (!wordDragged) return;
 
-    // Take the dropped element from where it was before
+    // 2. Remover de origen (COPIA LOCAL)
+    let newScrambled = [...scrambledWords];
+    let newFormed = [...formedSentence];
+
     if (from === "scrambled-words-container") {
-      setScrambledWords((prevWords) =>
-        prevWords.filter((word) => word.id !== id),
-      );
-    }
-
-    // At item to where it was drop
-    if (to === "scrambled-words-container") {
-      setScrambledWords((prevWords) => [...prevWords, wordDragged]);
+      newScrambled = newScrambled.filter((word) => word.id !== id);
     } else {
-      const formedSentenceWithoutDragged = formedSentence.filter(
-        (word) => word.id !== id,
-      );
-
-      if (dragOverWordId && dragOverWordId !== id) {
-        const insertIndex = formedSentenceWithoutDragged.findIndex(
-          (element) => element.id === dragOverWordId,
-        );
-
-        if (insertIndex !== -1) {
-          const reorderedSentence = [...formedSentenceWithoutDragged];
-          reorderedSentence.splice(insertIndex, 0, wordDragged);
-          return setFormedSentence(reorderedSentence);
-        }
-      }
-
-      setFormedSentence((prevWords) => [...prevWords, wordDragged]);
+      newFormed = newFormed.filter((word) => word.id !== id);
     }
 
+    // 3. Insertar en destino
+    if (to === "scrambled-words-container") {
+      newScrambled.push(wordDragged);
+    } else {
+      if (dragOverWordId && dragOverWordId !== id) {
+        const index = newFormed.findIndex((w) => w.id === dragOverWordId);
+
+        if (index !== -1) {
+          newFormed.splice(index, 0, wordDragged);
+        } else {
+          newFormed.push(wordDragged);
+        }
+      } else {
+        newFormed.push(wordDragged);
+      }
+    }
+
+    // 4. Actualizar estados UNA sola vez
+    setScrambledWords(newScrambled);
+    setFormedSentence(newFormed);
+
+    // limpiar UI
     setDraggingWord(null);
     setDragOverZone(null);
     setDragOverWordId(null);
