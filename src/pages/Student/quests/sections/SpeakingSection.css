@@ -16,8 +16,22 @@
   font-size: 18px;
 }
 
+.element-formed-sentence {
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  display: inline-block;
+  margin: 5px;
+}
+
 .form-sentence-container {
   min-height: 40px;
   background-color: rgb(236, 234, 234);
   margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
 }
