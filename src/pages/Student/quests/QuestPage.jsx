@@ -31,6 +31,10 @@ export function QuestPage() {
     currentActivityRef.current.validateAnswer();
   }
 
+  function handleNextInsideActivity() {
+    currentActivityRef.current.handleNext();
+  }
+
   const CurrentComponent = activities[currentActivityIndex].component;
 
   const navigate = useNavigate();
@@ -111,6 +115,7 @@ export function QuestPage() {
           wizardButtonMode={wizardButtonMode}
           onCheckAnswer={handleCheckAnswer}
           onTryAgain={handleTryAgain}
+          onNextInsideActivity={handleNextInsideActivity}
         />
       </div>
 

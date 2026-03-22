@@ -5,6 +5,7 @@ export function WizardControls({
   wizardButtonMode,
   onCheckAnswer,
   onTryAgain,
+  onNextInsideActivity,
 }) {
   if (isLastStep) {
     return (
@@ -25,6 +26,15 @@ export function WizardControls({
     return (
       <button className="check-wizard-button" onClick={onCheckAnswer}>
         Check Answer
+      </button>
+    );
+  } else if (wizardButtonMode === "next-inside-activity") {
+    return (
+      <button
+        className="next-wizard-button-inside-Activity"
+        onClick={onNextInsideActivity}
+      >
+        Next
       </button>
     );
   } else if (wizardButtonMode === "next") {
