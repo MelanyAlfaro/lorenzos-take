@@ -76,8 +76,11 @@ export const quests = [
           { id: "s1-w8", word: "cause" },
           { id: "s1-w9", word: "stress." },
         ],
-        correctSentence:
-          "I think social media should hide likes because they cause stress.",
+        answer: {
+          id: "s1-correct",
+          sentence:
+            "I think social media should hide likes because they cause stress.",
+        },
       },
       {
         words: [
@@ -94,8 +97,11 @@ export const quests = [
           { id: "s2-w10", word: "people" },
           { id: "s2-w11", word: "enjoy." },
         ],
-        correctSentence:
-          "In my opinion, likes are important because they help creators understand what people enjoy.",
+        answer: {
+          id: "s2-correct",
+          sentence:
+            "In my opinion, likes are important because they help creators understand what people enjoy.",
+        },
       },
       {
         words: [
@@ -109,8 +115,11 @@ export const quests = [
           { id: "s3-w7", word: "affect" },
           { id: "s3-w8", word: "self-esteem." },
         ],
-        correctSentence:
-          "I believe focusing too much on likes can affect self-esteem.",
+        answer: {
+          id: "s3-correct",
+          sentence:
+            "I believe focusing too much on likes can affect self-esteem.",
+        },
       },
     ],
   },
@@ -211,8 +220,11 @@ export const quests = [
           { id: "p1-w11", word: "research" },
           { id: "p1-w12", word: "information." },
         ],
-        correctSentence:
-          "I think phones should be allowed in class because they help students research information.",
+        answer: {
+          id: "p1-correct",
+          sentence:
+            "I think phones should be allowed in class because they help students research information.",
+        },
       },
       {
         words: [
@@ -227,8 +239,11 @@ export const quests = [
           { id: "p2-w8", word: "social media" },
           { id: "p2-w9", word: "in class." },
         ],
-        correctSentence:
-          "In my opinion, phones are a distraction because students use social media in class.",
+        answer: {
+          id: "p2-correct",
+          sentence:
+            "In my opinion, phones are a distraction because students use social media in class.",
+        },
       },
       {
         words: [
@@ -242,8 +257,11 @@ export const quests = [
           { id: "p3-w7", word: "with" },
           { id: "p3-w8", word: "artificial intelligence." },
         ],
-        correctSentence:
-          "I believe phones make cheating easier, especially with artificial intelligence.",
+        answer: {
+          id: "p3-correct",
+          sentence:
+            "I believe phones make cheating easier, especially with artificial intelligence.",
+        },
       },
     ],
   },

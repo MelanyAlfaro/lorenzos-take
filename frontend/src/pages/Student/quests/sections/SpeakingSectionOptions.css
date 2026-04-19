@@ -1,0 +1,40 @@
+.speaking-options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 20px;
+  margin: 10px 50px;
+}
+
+.speaking-option-button {
+  padding: 20px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 550;
+}
+
+.pick-option-instruction {
+  font-size: 30px;
+  margin: 25px 20px;
+  align-self: center;
+  font-weight: bold;
+}
+
+/* Random color classes for speaking buttons */
+.speaking-option-pink {
+  background: linear-gradient(90deg, #f88b87, #fcace8);
+}
+.speaking-option-blue {
+  background: linear-gradient(90deg, #81fde0, #83c0f9);
+}
+.speaking-option-green {
+  background: linear-gradient(90deg, #a3fe6e, #6efe90);
+}
+.speaking-option-yellow {
+  background: linear-gradient(90deg, #febd6e, #fefe6e);
+}

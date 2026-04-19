@@ -35,6 +35,10 @@ export function QuestPage() {
     currentActivityRef.current.handleNext();
   }
 
+  function handleTryAgainInsideActivity() {
+    currentActivityRef.current.handleTryAgain();
+  }
+
   const CurrentComponent = activities[currentActivityIndex].component;
 
   const navigate = useNavigate();
@@ -116,6 +120,7 @@ export function QuestPage() {
           onCheckAnswer={handleCheckAnswer}
           onTryAgain={handleTryAgain}
           onNextInsideActivity={handleNextInsideActivity}
+          onTryAgainInsideActivity={handleTryAgainInsideActivity}
         />
       </div>
 

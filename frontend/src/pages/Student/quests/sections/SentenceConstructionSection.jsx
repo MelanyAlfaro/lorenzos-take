@@ -1,11 +1,18 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import { shuffleArray } from "../../../util";
-import { CheckAnswer } from "../CheckAnswer";
+import { TOTAL_ATTEMPTS } from "../../../constants";
 import "./SentenceConstructionSection.css";
 
 export const SentenceConstructionSection = forwardRef(
   function SentenceConstructionSection(
-    { quest, setResult, setWizardButtonMode, setResultMessage },
+    {
+      quest,
+      setResult,
+      setWizardButtonMode,
+      setResultMessage,
+      usedAttempts,
+      setUsedAttempts,
+    },
     ref,
   ) {
     const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
@@ -63,7 +70,24 @@ export const SentenceConstructionSection = forwardRef(
             setWizardButtonMode("next-inside-activity");
           }
         } else {
-          // Wrong answer, do nothing or show feedback
+          setResult("wrong");
+
+          const newAttempts = usedAttempts + 1;
+          setUsedAttempts(newAttempts);
+
+          if (newAttempts < TOTAL_ATTEMPTS) {
+            setResultMessage("Try again! You can do it! 💪");
+            setWizardButtonMode("try-again-inside-activity");
+          } else {
+            setResultMessage(
+              `The correct answer is: ${speakingSection[currentSentenceIndex].correctSentence}`,
+            );
+            if (currentSentenceIndex === speakingSection.length - 1) {
+              setWizardButtonMode("next");
+            } else {
+              setWizardButtonMode("next-inside-activity");
+            }
+          }
         }
       } else {
         console.log("All words not placed, cannot verify answer");
@@ -78,9 +102,17 @@ export const SentenceConstructionSection = forwardRef(
           setFormedSentence([]);
           setResult(null);
           setResultMessage(null);
-        } else {
-          // Already at last sentence, let parent handle next activity
-        }
+          setUsedAttempts(0);
+        } // If there isn't more sentences to form, we can consider the activity completed, and go to the next part of the quest
+      },
+      handleTryAgain: () => {
+        setFormedSentence([]);
+        setScrambledWords(
+          shuffleArray(speakingSection[currentSentenceIndex].words),
+        );
+        setResult(null);
+        setWizardButtonMode("check");
+        setResultMessage(null);
       },
     }));
     function handleOnDragOver(event, zone) {
@@ -157,6 +189,7 @@ export const SentenceConstructionSection = forwardRef(
       <div>
         <div className="content-container">
           <h1>Sentence Construction Section</h1>
+          <p>Remaining Attemps: {TOTAL_ATTEMPTS - usedAttempts}</p>
           <div
             className="scrambled-words-container"
             onDragOver={(event) =>
