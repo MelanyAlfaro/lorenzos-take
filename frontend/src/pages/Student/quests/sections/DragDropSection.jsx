@@ -1,8 +1,16 @@
+import { forwardRef, useImperativeHandle } from "react";
 import { useState, useEffect } from "react";
 
 import "./DragDropSection.css";
 
-export function DragDropSection({ quest, setWizardButtonMode }) {
+export const DragDropSection = forwardRef(function DragDropSection(
+  { quest, setWizardButtonMode },
+  ref,
+) {
+  useImperativeHandle(ref, () => ({
+    validateAnswer: () => {},
+    handleNext: () => {},
+  }));
   // TODO: Check if this is always valid
   const instruction = "Drag and drop each idea into the correct colum.";
   // Elements of types text and type (negative | positive)
@@ -197,4 +205,4 @@ export function DragDropSection({ quest, setWizardButtonMode }) {
       )}
     </div>
   );
-}
+});

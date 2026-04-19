@@ -64,53 +64,62 @@ export const quests = [
 
     speaking: [
       {
-        scrambled: [
-          "I",
-          "think",
-          "social media",
-          "should",
-          "hide",
-          "likes",
-          "because",
-          "they",
-          "cause",
-          "stress",
+        words: [
+          { id: "s1-w0", word: "I" },
+          { id: "s1-w1", word: "think" },
+          { id: "s1-w2", word: "social media" },
+          { id: "s1-w3", word: "should" },
+          { id: "s1-w4", word: "hide" },
+          { id: "s1-w5", word: "likes" },
+          { id: "s1-w6", word: "because" },
+          { id: "s1-w7", word: "they" },
+          { id: "s1-w8", word: "cause" },
+          { id: "s1-w9", word: "stress." },
         ],
-        correctSentence:
-          "I think social media should hide likes because they cause stress.",
+        answer: {
+          id: "s1-correct",
+          sentence:
+            "I think social media should hide likes because they cause stress.",
+        },
       },
       {
-        scrambled: [
-          "In my opinion",
-          "likes",
-          "are",
-          "important",
-          "because",
-          "they",
-          "help",
-          "creators",
-          "understand",
-          "what",
-          "people",
-          "enjoy",
+        words: [
+          { id: "s2-w0", word: "In my opinion," },
+          { id: "s2-w1", word: "likes" },
+          { id: "s2-w2", word: "are" },
+          { id: "s2-w3", word: "important" },
+          { id: "s2-w4", word: "because" },
+          { id: "s2-w5", word: "they" },
+          { id: "s2-w6", word: "help" },
+          { id: "s2-w7", word: "creators" },
+          { id: "s2-w8", word: "understand" },
+          { id: "s2-w9", word: "what" },
+          { id: "s2-w10", word: "people" },
+          { id: "s2-w11", word: "enjoy." },
         ],
-        correctSentence:
-          "In my opinion, likes are important because they help creators understand what people enjoy.",
+        answer: {
+          id: "s2-correct",
+          sentence:
+            "In my opinion, likes are important because they help creators understand what people enjoy.",
+        },
       },
       {
-        scrambled: [
-          "I",
-          "believe",
-          "focusing",
-          "too much",
-          "on",
-          "likes",
-          "can",
-          "affect",
-          "self-esteem",
+        words: [
+          { id: "s3-w0", word: "I" },
+          { id: "s3-w1", word: "believe" },
+          { id: "s3-w2", word: "focusing" },
+          { id: "s3-w3", word: "too much" },
+          { id: "s3-w4", word: "on" },
+          { id: "s3-w5", word: "likes" },
+          { id: "s3-w6", word: "can" },
+          { id: "s3-w7", word: "affect" },
+          { id: "s3-w8", word: "self-esteem." },
         ],
-        correctSentence:
-          "I believe focusing too much on likes can affect self-esteem.",
+        answer: {
+          id: "s3-correct",
+          sentence:
+            "I believe focusing too much on likes can affect self-esteem.",
+        },
       },
     ],
   },
@@ -196,54 +205,63 @@ export const quests = [
 
     speaking: [
       {
-        scrambled: [
-          "I",
-          "think",
-          "phones",
-          "should",
-          "be",
-          "allowed",
-          "in class",
-          "because",
-          "they",
-          "help",
-          "students",
-          "research",
-          "information",
+        words: [
+          { id: "p1-w0", word: "I" },
+          { id: "p1-w1", word: "think" },
+          { id: "p1-w2", word: "phones" },
+          { id: "p1-w3", word: "should" },
+          { id: "p1-w4", word: "be" },
+          { id: "p1-w5", word: "allowed" },
+          { id: "p1-w6", word: "in class" },
+          { id: "p1-w7", word: "because" },
+          { id: "p1-w8", word: "they" },
+          { id: "p1-w9", word: "help" },
+          { id: "p1-w10", word: "students" },
+          { id: "p1-w11", word: "research" },
+          { id: "p1-w12", word: "information." },
         ],
-        correctSentence:
-          "I think phones should be allowed in class because they help students research information.",
+        answer: {
+          id: "p1-correct",
+          sentence:
+            "I think phones should be allowed in class because they help students research information.",
+        },
       },
       {
-        scrambled: [
-          "In my opinion",
-          "phones",
-          "are",
-          "a",
-          "distraction",
-          "because",
-          "students",
-          "use",
-          "social media",
-          "in class",
+        words: [
+          { id: "p2-w0", word: "In my opinion" },
+          { id: "p2-w1", word: "phones" },
+          { id: "p2-w2", word: "are" },
+          { id: "p2-w3", word: "a" },
+          { id: "p2-w4", word: "distraction" },
+          { id: "p2-w5", word: "because" },
+          { id: "p2-w6", word: "students" },
+          { id: "p2-w7", word: "use" },
+          { id: "p2-w8", word: "social media" },
+          { id: "p2-w9", word: "in class." },
         ],
-        correctSentence:
-          "In my opinion, phones are a distraction because students use social media in class.",
+        answer: {
+          id: "p2-correct",
+          sentence:
+            "In my opinion, phones are a distraction because students use social media in class.",
+        },
       },
       {
-        scrambled: [
-          "I",
-          "believe",
-          "phones",
-          "make",
-          "cheating",
-          "easier",
-          "especially",
-          "with",
-          "artificial intelligence",
+        words: [
+          { id: "p3-w0", word: "I" },
+          { id: "p3-w1", word: "believe" },
+          { id: "p3-w2", word: "phones" },
+          { id: "p3-w3", word: "make" },
+          { id: "p3-w4", word: "cheating" },
+          { id: "p3-w5", word: "easier" },
+          { id: "p3-w6", word: "especially" },
+          { id: "p3-w7", word: "with" },
+          { id: "p3-w8", word: "artificial intelligence." },
         ],
-        correctSentence:
-          "I believe phones make cheating easier, especially with artificial intelligence.",
+        answer: {
+          id: "p3-correct",
+          sentence:
+            "I believe phones make cheating easier, especially with artificial intelligence.",
+        },
       },
     ],
   },

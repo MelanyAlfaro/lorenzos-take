@@ -5,6 +5,8 @@ export function WizardControls({
   wizardButtonMode,
   onCheckAnswer,
   onTryAgain,
+  onNextInsideActivity,
+  onTryAgainInsideActivity,
 }) {
   if (isLastStep) {
     return (
@@ -15,17 +17,40 @@ export function WizardControls({
   }
 
   if (wizardButtonMode === "disabled") {
-    return <button className="next-wizzard-button-disabled">Next</button>;
+    //TODO : REMOVE
+    return (
+      <button className="next-wizzard-button-disabled" onClick={onNext}>
+        Next
+      </button>
+    );
   } else if (wizardButtonMode === "check") {
     return (
       <button className="check-wizard-button" onClick={onCheckAnswer}>
         Check Answer
       </button>
     );
+  } else if (wizardButtonMode === "next-inside-activity") {
+    return (
+      <button
+        className="next-wizard-button-inside-Activity"
+        onClick={onNextInsideActivity}
+      >
+        Next
+      </button>
+    );
   } else if (wizardButtonMode === "next") {
     return (
       <button className="next-wizard-button" onClick={onNext}>
         Next
+      </button>
+    );
+  } else if (wizardButtonMode === "try-again-inside-activity") {
+    return (
+      <button
+        className="try-again-inside-activity-wizard-button"
+        onClick={onTryAgainInsideActivity}
+      >
+        Try again
       </button>
     );
   } else if (wizardButtonMode === "Try again") {

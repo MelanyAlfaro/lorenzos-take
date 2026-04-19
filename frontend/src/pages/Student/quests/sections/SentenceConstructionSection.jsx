@@ -1,0 +1,271 @@
+import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
+import { shuffleArray } from "../../../util";
+import { TOTAL_ATTEMPTS } from "../../../constants";
+import "./SentenceConstructionSection.css";
+
+export const SentenceConstructionSection = forwardRef(
+  function SentenceConstructionSection(
+    {
+      quest,
+      setResult,
+      setWizardButtonMode,
+      setResultMessage,
+      usedAttempts,
+      setUsedAttempts,
+    },
+    ref,
+  ) {
+    const [currentSentenceIndex, setCurrentSentenceIndex] = useState(0);
+
+    const speakingSection = quest.speaking;
+    useEffect(() => {
+      setResult(null);
+      setWizardButtonMode("check");
+    }, [currentSentenceIndex]);
+    // Variable use to save the item that is moving, saves id, and from where it's been dragged
+    const [draggingWord, setDraggingWord] = useState(null);
+    // Saves the name of the are over with are dragging
+    const [dragOverZone, setDragOverZone] = useState(null);
+
+    const [scrambledWords, setScrambledWords] = useState(() =>
+      shuffleArray(speakingSection[currentSentenceIndex].words),
+    );
+
+    const [formedSentence, setFormedSentence] = useState([]);
+
+    // To know over which word of the formed sentence we are dragging, to insert before it
+    const [dragOverWordId, setDragOverWordId] = useState(null);
+
+    const [showCongratulations, setShowCongratulations] = useState(false);
+    useEffect(() => {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (currentSentenceIndex < speakingSection.length) {
+        setScrambledWords(
+          shuffleArray(speakingSection[currentSentenceIndex].words),
+        );
+      }
+    }, [currentSentenceIndex, speakingSection]);
+
+    function verifyAnswer() {
+      // Only check if all words are placed
+      if (scrambledWords.length === 0) {
+        let getFormedSentence = formedSentence[0].word + " ";
+        for (let i = 1; i < formedSentence.length; i++) {
+          getFormedSentence += formedSentence[i].word;
+          if (i !== formedSentence.length - 1) {
+            getFormedSentence += " ";
+          }
+        }
+        if (
+          speakingSection[currentSentenceIndex].correctSentence ===
+          getFormedSentence
+        ) {
+          setResult("correct");
+          if (currentSentenceIndex === speakingSection.length - 1) {
+            setResultMessage(
+              "Great job! Now you gotta speak the sentences you formed!",
+            );
+            setWizardButtonMode("next");
+          } else {
+            setWizardButtonMode("next-inside-activity");
+          }
+        } else {
+          setResult("wrong");
+
+          const newAttempts = usedAttempts + 1;
+          setUsedAttempts(newAttempts);
+
+          if (newAttempts < TOTAL_ATTEMPTS) {
+            setResultMessage("Try again! You can do it! 💪");
+            setWizardButtonMode("try-again-inside-activity");
+          } else {
+            setResultMessage(
+              `The correct answer is: ${speakingSection[currentSentenceIndex].correctSentence}`,
+            );
+            if (currentSentenceIndex === speakingSection.length - 1) {
+              setWizardButtonMode("next");
+            } else {
+              setWizardButtonMode("next-inside-activity");
+            }
+          }
+        }
+      } else {
+        console.log("All words not placed, cannot verify answer");
+      }
+    }
+
+    useImperativeHandle(ref, () => ({
+      validateAnswer: () => verifyAnswer(),
+      handleNext: () => {
+        if (currentSentenceIndex < speakingSection.length - 1) {
+          setCurrentSentenceIndex(currentSentenceIndex + 1);
+          setFormedSentence([]);
+          setResult(null);
+          setResultMessage(null);
+          setUsedAttempts(0);
+        } // If there isn't more sentences to form, we can consider the activity completed, and go to the next part of the quest
+      },
+      handleTryAgain: () => {
+        setFormedSentence([]);
+        setScrambledWords(
+          shuffleArray(speakingSection[currentSentenceIndex].words),
+        );
+        setResult(null);
+        setWizardButtonMode("check");
+        setResultMessage(null);
+      },
+    }));
+    function handleOnDragOver(event, zone) {
+      event.preventDefault();
+      setDragOverZone(zone);
+    }
+
+    function handleDragStart(event, itemID, from) {
+      console.log("drag start", itemID, from);
+      // TODO: Check if I really new this, it is for the visual part
+      setDraggingWord({ id: itemID, from });
+      event.dataTransfer.setData("idDragged", itemID);
+      event.dataTransfer.setData("originDragged", from);
+      event.dataTransfer.effectAllowed = "move";
+    }
+
+    function handleOnDrop(event, to) {
+      event.preventDefault();
+
+      const id = event.dataTransfer.getData("idDragged");
+      const from = event.dataTransfer.getData("originDragged");
+
+      if (!id) return;
+
+      // First we know to know if the word ir from the scrambled container or from the formed sentence, to know from where we are dragging
+      const sourceArray =
+        from === "scrambled-words-container" ? scrambledWords : formedSentence;
+
+      // Once with the source array, we can find the word that is being dragged, to move it to the new container
+      const wordDragged = sourceArray.find((element) => element.id === id);
+      if (!wordDragged) return;
+
+      // Get a copy of the arrays to modify them, we will update the states at the end with the new arrays, to avoid multiple updates and re-renders, and problems with the async of the states
+      let newScrambled = [...scrambledWords];
+      let newFormed = [...formedSentence];
+
+      // Whatever the source we remove the word from it
+      if (from === "scrambled-words-container") {
+        newScrambled = newScrambled.filter((word) => word.id !== id);
+      } else {
+        newFormed = newFormed.filter((word) => word.id !== id);
+      }
+
+      // If the destination is the scrambled container just addead to the end
+      if (to === "scrambled-words-container") {
+        newScrambled.push(wordDragged);
+      } else {
+        // If the destination is the formed sentence and we are dragging over a word, we insert before that word, if not we add to the end
+        if (dragOverWordId && dragOverWordId !== id) {
+          // We find the index of the word that we are dragging over, to insert before it
+          const index = newFormed.findIndex((w) => w.id === dragOverWordId);
+
+          // If I find the index
+          if (index !== -1) {
+            // Insert the word dragged in the position index without remove any element
+            newFormed.splice(index, 0, wordDragged);
+          } else {
+            // If we don't find the index also ass to the end
+            newFormed.push(wordDragged);
+          }
+        } else {
+          newFormed.push(wordDragged);
+        }
+      }
+
+      setScrambledWords(newScrambled);
+      setFormedSentence(newFormed);
+
+      setDraggingWord(null);
+      setDragOverZone(null);
+      setDragOverWordId(null);
+    }
+    return (
+      <div>
+        <div className="content-container">
+          <h1>Sentence Construction Section</h1>
+          <p>Remaining Attemps: {TOTAL_ATTEMPTS - usedAttempts}</p>
+          <div
+            className="scrambled-words-container"
+            onDragOver={(event) =>
+              handleOnDragOver(event, "scrambled-words-container")
+            }
+            onDrop={(event) => handleOnDrop(event, "scrambled-words-container")}
+            onDragLeave={() => setDragOverZone(null)}
+          >
+            {scrambledWords.length > 0
+              ? scrambledWords.map((element) => {
+                  return (
+                    <div
+                      className="scrambled-word"
+                      key={element.id}
+                      draggable
+                      onDragStart={(event) =>
+                        handleDragStart(
+                          event,
+                          element.id,
+                          "scrambled-words-container",
+                        )
+                      }
+                      onDragEnd={() => {
+                        setDraggingWord(null);
+                        setDragOverZone(null);
+                        setDragOverWordId(null);
+                      }}
+                    >
+                      {element.word}
+                    </div>
+                  );
+                })
+              : "All words placed!"}
+          </div>
+
+          <div
+            className="form-sentence-container"
+            onDragOver={(event) =>
+              handleOnDragOver(event, "form-sentence-container")
+            }
+            onDrop={(event) => handleOnDrop(event, "form-sentence-container")}
+            onDragLeave={() => setDragOverZone(null)}
+          >
+            {formedSentence.length > 0
+              ? formedSentence.map((element) => {
+                  return (
+                    <div
+                      className="element-formed-sentence"
+                      key={element.id}
+                      draggable
+                      onDragStart={(event) =>
+                        handleDragStart(
+                          event,
+                          element.id,
+                          "form-sentence-container",
+                        )
+                      }
+                      onDragEnd={() => {
+                        setDraggingWord(null);
+                        setDragOverZone(null);
+                        setDragOverWordId(null);
+                      }}
+                      onDragOver={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setDragOverWordId(element.id);
+                      }}
+                    >
+                      {element.word}
+                    </div>
+                  );
+                })
+              : "Form the sentence here"}
+          </div>
+        </div>
+      </div>
+    );
+  },
+);

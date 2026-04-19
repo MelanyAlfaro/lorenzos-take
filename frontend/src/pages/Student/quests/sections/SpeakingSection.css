@@ -1,0 +1,44 @@
+.speaking-record-containter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 10px 50px;
+  font-size: 20px;
+}
+
+.speaking-sentence-to-speak {
+  font-size: 30px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ffe68b, #ffbf8b);
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin: 50px 20px;
+}
+
+.speaking-record-button {
+  padding: 20px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 200px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 550;
+  background: linear-gradient(270deg, #f88b87, #fcace8, #f88b87);
+  background-size: 400% 400%;
+  animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
