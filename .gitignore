@@ -1,0 +1,14 @@
+# Build outputs
+bin/
+obj/
+.vs/
+
+
+# Base de datos local (por si acaso)
+*.db
+*.db-shm
+*.db-wal
+
+# User secrets (aunque estos ya están fuera del proyecto, por seguridad)
+appsettings.Development.json
+backend.deps.json
