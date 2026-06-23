@@ -24,7 +24,7 @@ public class Student
     public int GroupId { get; set; }  
     
     // Navigation property representing the group the student belongs to. This allows for easy access to related group data when querying the student.
-    public Group Group { get; set; }
+    public required Group Group { get; set; }
 
     // Navigation property representing the quest completions of the student. This allows for easy access to related quest completion data when querying the student.
     public List<QuestCompletion> QuestCompletions { get; set; } = new();
