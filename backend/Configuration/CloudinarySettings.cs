@@ -1,4 +1,4 @@
-namespace Backend.Configuration
+namespace backend.Configuration
 {
   // TODO : check if this with appsettings.json is secure when uploding to web
     public class CloudinarySettings

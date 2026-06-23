@@ -1,4 +1,4 @@
-namespace Backend.Configuration
+namespace backend.Configuration
 {
     public interface IStorageService
     {
