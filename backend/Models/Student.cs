@@ -21,10 +21,10 @@ public class Student
     public int TotalXP { get; set; } = 0;
 
     // Foreign key referencing the group the student belongs to, establishing a relationship between the student and their group.
-    public int GroupId { get; set; }  
+    public int? GroupId { get; set; }  
     
     // Navigation property representing the group the student belongs to. This allows for easy access to related group data when querying the student.
-    public required Group Group { get; set; }
+    public Group? Group { get; set; }
 
     // Navigation property representing the quest completions of the student. This allows for easy access to related quest completion data when querying the student.
     public List<QuestCompletion> QuestCompletions { get; set; } = new();
