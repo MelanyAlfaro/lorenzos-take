@@ -1,6 +1,7 @@
 import xpStart from "../../../assets/xpStart.png";
 import ProfileDefault from "../../../assets/profileDefault.png";
 import LorenzoWaving from "../../../assets/lorenzoWavingHalf.png";
+import { LogoutButton } from "../../../components/LogoutButton";
 
 import "./Header.css";
 export function Header() {
@@ -21,6 +22,7 @@ export function Header() {
           <img src={ProfileDefault} className="profile-image"></img>
           <p className="profile-name">Lorenzo</p>
         </div>
+        <LogoutButton />
       </div>
     </div>
   );
