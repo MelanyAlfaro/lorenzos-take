@@ -12,3 +12,5 @@ obj/
 # User secrets (aunque estos ya están fuera del proyecto, por seguridad)
 appsettings.Development.json
 backend.deps.json
+frontend/.env.development
+frontend/.env.production
